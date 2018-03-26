@@ -16,6 +16,8 @@ resource "aws_vpn_connection" "default" {
 }
 
 resource "aws_vpn_gateway_attachment" "default" {
+  count = "${var.create_vpn_connection ? 1 : 0}"
+
   vpc_id         = "${var.vpc_id}"
   vpn_gateway_id = "${var.vpn_gateway_id}"
 }
